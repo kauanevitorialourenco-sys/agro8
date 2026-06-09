@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agrinho - Versão Campeã</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#eefaf0;
+color:#1b1b1b;
+}
+
+/* CABEÇALHO */
+header{
+background:linear-gradient(135deg,#1b5e20,#43a047);
+color:white;
+text-align:center;
+padding:40px;
+}
+
+header h1{margin:0;font-size:2.6em}
+
+/* MENU */
+nav{
+background:#2e7d32;
+text-align:center;
+padding:10px;
+position:sticky;
+top:0;
+}
+
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* SEÇÕES */
+section{
+max-width:1000px;
+margin:auto;
+padding:25px;
+}
+
+h2{
+color:#1b5e20;
+border-left:5px solid #2e7d32;
+padding-left:10px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px 0;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+line-height:1.6;
+}
+
+img{
+width:100%;
+border-radius:12px;
+margin-top:10px;
+}
+
+/* BOTÕES */
+button{
+background:#2e7d32;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+margin:5px;
+}
+
+button:hover{
+background:#145a1a;
+}
+
+/* JOGOS */
+.game{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+margin-top:10px;
+}
+
+/* PERSONAGEM */
+#bot{
+position:fixed;
+bottom:15px;
+right:15px;
+width:230px;
+background:white;
+border-radius:12px;
+padding:12px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+#robo{
+font-size:40px;
+text-align:center;
+}
+
+/* CERTIFICADO */
+#certificado{
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+}
+
+.certBox{
+background:white;
+padding:30px;
+border-radius:12px;
+text-align:center;
+width:90%;
+max-width:500px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🌱 AGRINHO CAMPEÃO</h1>
+<p>Agro Forte, Futuro Sustentável</p>
+</header>
+
+<nav>
+<a href="#intro">Início</a>
+<a href="#agro">Agro</a>
+<a href="#jogos">Jogos</a>
+<a href="#final">Final</a>
+</nav>
+
+<section id="intro">
+
+<h2>🌾 Introdução</h2>
+
+<div class="card">
+O Agrinho mostra a importância da agricultura, da sustentabilidade e do cuidado com o meio ambiente.
+Produzir alimentos e preservar a natureza devem andar juntos para garantir o futuro.
+</div>
+
+<img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1000">
+
+</section>
+
+<section id="agro">
+
+<h2>🚜 Agricultura Sustentável</h2>
+
+<div class="card">
+A agricultura sustentável utiliza tecnologia e cuidados ambientais para produzir mais alimentos sem destruir a natureza.
+</div>
+
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1000">
+
+<div class="card">
+☠️ Agrotóxicos devem ser usados com responsabilidade para evitar danos ao solo, água e saúde humana.
+</div>
+
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1000">
+
+</section>
+
+<section id="jogos">
+
+<h2>🎮 Jogos Educativos</h2>
+
+<!-- JOGO 1 -->
+<div class="game">
+<h3>🌳 Plantar Árvores</h3>
+<button onclick="plantar()">🌱 Plantar</button>
+<p id="arvores">0 árvores</p>
+</div>
+
+<!-- JOGO 2 -->
+<div class="game">
+<h3>❓ Quiz Agrinho</h3>
+<p>Qual atitude ajuda o meio ambiente?</p>
+
+<button onclick="quiz(true)">🌱 Plantar árvores</button>
+<button onclick="quiz(false)">🔥 Desmatar</button>
+
+<p id="resposta"></p>
+<p>Pontos: <span id="pontos">0</span></p>
+</div>
+
+<button onclick="finalizar()">🏆 Finalizar Projeto</button>
+
+</section>
+
+<section id="final">
+
+<h2>🏁 Conclusão</h2>
+
+<div class="card">
+O Agrinho ensina que tecnologia, agricultura e meio ambiente devem trabalhar juntos para um futuro sustentável.
+</div>
+
+</section>
+
+<footer style="text-align:center;padding:20px;background:#1b5e20;color:white;">
+🌱 Agrinho Campeão 2026
+</footer>
+
+<!-- PERSONAGEM -->
+<div id="bot">
+<div id="robo">🤖</div>
+<p id="fala">Olá! Eu sou seu guia!</p>
+<button onclick="falar()">Falar</button>
+</div>
+
+<!-- CERTIFICADO -->
+<div id="certificado">
+<div class="certBox">
+<h1>🏆 CERTIFICADO</h1>
+<p>Parabéns por concluir o Agrinho Campeão!</p>
+<p id="resultadoFinal"></p>
+<button onclick="fecharCert()">Fechar</button>
+</div>
+</div>
+
+<script>
+
+let arvores = 0;
+let pontos = 0;
+
+// plantar árvores
+function plantar(){
+arvores++;
+document.getElementById("arvores").innerHTML =
+arvores + " árvores 🌳";
+}
+
+// quiz
+function quiz(certa){
+if(certa){
+pontos++;
+document.getElementById("resposta").innerHTML="✅ Correto!";
+}else{
+document.getElementById("resposta").innerHTML="❌ Errado!";
+}
+document.getElementById("pontos").innerHTML=pontos;
+}
+
+// personagem
+function falar(){
+let msgs=[
+"O agro sustentável é o futuro!",
+"Preservar a natureza é essencial!",
+"A FAEP apoia o campo!",
+"O Agrinho ensina muito!"
+];
+
+document.getElementById("fala").innerHTML =
+msgs[Math.floor(Math.random()*msgs.length)];
+}
+
+// final
+function finalizar(){
+document.getElementById("certificado").style.display="flex";
+document.getElementById("resultadoFinal").innerHTML =
+"Você fez " + pontos + " pontos e plantou " + arvores + " árvores 🌳";
+}
+
+function fecharCert(){
+document.getElementById("certificado").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
